@@ -4,6 +4,7 @@ import 'package:bloc_demo/bloc/button_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../domain/button_logic.dart';
 
 import 'bloc/button_bloc.dart';
 import 'bloc/button_event.dart';
@@ -11,7 +12,9 @@ import 'bloc/button_event.dart';
 void main(){
   runApp(
     BlocProvider(
-      create: (context) => ButtonBloc(),
+      create: (context) => ButtonBloc(
+        buttonLogic: ButtonLogic(),//creates an instance of the ButtonLogic class, not a function
+      ),
       child: const MyApp(),
     ),
   );
