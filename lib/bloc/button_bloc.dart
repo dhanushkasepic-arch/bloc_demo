@@ -3,18 +3,19 @@
 
 import 'package:bloc_demo/bloc/button_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../domain/button_logic.dart';
+import '../domain/usecases/handle_button_click.dart';
+
 
 import 'button_event.dart';
 
 class ButtonBloc extends Bloc<ButtonEvent, ButtonState> {
 
-  final  ButtonLogic buttonLogic;
+  final  HandleButtonClick handleButtonClick;
 
-  ButtonBloc({required this.buttonLogic}) : super(ButtonInitial()){
+  ButtonBloc({required this.handleButtonClick}) : super(ButtonInitial()){
 
     on<ButtonClicked>((event, emit) {
-      buttonLogic.handleButtonClick();
+      handleButtonClick();
 
       emit(ButtonClickedState());
     });
